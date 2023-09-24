@@ -7,10 +7,40 @@ class ProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(productDataModel.name.toString()),
-      subtitle: Text(productDataModel.description.toString()),
-      trailing: Text(productDataModel.category.toString()),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            title: Text(productDataModel.name.toString()),
+            subtitle: Column(
+              children: [
+                Text(productDataModel.description.toString()),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "Price \$" + productDataModel.price.toString(),
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          //homeBloc.add(HomeProductWishlistButtonNavigateEvent());
+                        },
+                        icon: Icon(Icons.favorite_border_outlined)),
+                    IconButton(
+                        onPressed: () {
+                          //homeBloc.add(HomeCartButtonNavigateEvent());
+                        },
+                        icon: Icon(Icons.shopping_bag_outlined))
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
