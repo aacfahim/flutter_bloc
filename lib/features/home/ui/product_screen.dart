@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:techsell_bloc/features/home/bloc/home_bloc.dart';
 import 'package:techsell_bloc/features/home/models/home_product_data_model.dart';
 
 class ProductScreen extends StatelessWidget {
-  const ProductScreen({super.key, required this.productDataModel});
+  const ProductScreen(
+      {super.key, required this.productDataModel, required this.homeBloc});
   final ProductDataModel productDataModel;
+  final HomeBloc homeBloc;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class ProductScreen extends StatelessWidget {
               children: [
                 Text(productDataModel.description.toString()),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       "Price \$" + productDataModel.price.toString(),
@@ -26,12 +29,14 @@ class ProductScreen extends StatelessWidget {
                     ),
                     IconButton(
                         onPressed: () {
-                          //homeBloc.add(HomeProductWishlistButtonNavigateEvent());
+                          homeBloc.add(HomeProductWishlistButtonClickedEvent(
+                              productDataModel));
                         },
                         icon: Icon(Icons.favorite_border_outlined)),
                     IconButton(
                         onPressed: () {
-                          //homeBloc.add(HomeCartButtonNavigateEvent());
+                          homeBloc.add(HomeProductCartButtonClickedEvent(
+                              productDataModel));
                         },
                         icon: Icon(Icons.shopping_bag_outlined))
                   ],
