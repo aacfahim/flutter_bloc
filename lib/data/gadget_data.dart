@@ -1,5 +1,5 @@
 class GadgetData {
-  static List<Map<String, dynamic>> techGadgets = [
+  List<Map<String, dynamic>> techGadgets = [
     {
       'name': 'Smartphone',
       'description':
@@ -33,6 +33,12 @@ class GadgetData {
       'description':
           'Virtual Reality headset that immerses users in virtual environments.',
       'price': 400,
+      'category': 'Entertainment',
+    },
+    {
+      'name': 'Headphone',
+      'description': 'ANC Headphone',
+      'price': 250,
       'category': 'Entertainment',
     },
   ];
