@@ -1,6 +1,7 @@
 class GadgetData {
-  List<Map<String, dynamic>> techGadgets = [
+  static List<Map<String, dynamic>> techGadgets = [
     {
+      'id': 1,
       'name': 'Smartphone',
       'description':
           'A mobile device with advanced features like internet connectivity, apps, and more.',
@@ -8,6 +9,7 @@ class GadgetData {
       'category': 'Communication',
     },
     {
+      'id': 2,
       'name': 'Laptop',
       'description':
           'A portable computer with a screen, keyboard, and trackpad or mouse.',
@@ -15,6 +17,7 @@ class GadgetData {
       'category': 'Computing',
     },
     {
+      'id': 3,
       'name': 'Smartwatch',
       'description':
           'A wearable device that can display notifications and run apps.',
@@ -22,6 +25,7 @@ class GadgetData {
       'category': 'Wearable',
     },
     {
+      'id': 4,
       'name': 'Wireless Earbuds',
       'description':
           'Small earphones that connect to devices wirelessly via Bluetooth.',
@@ -29,6 +33,7 @@ class GadgetData {
       'category': 'Audio',
     },
     {
+      'id': 5,
       'name': 'VR Headset',
       'description':
           'Virtual Reality headset that immerses users in virtual environments.',
@@ -36,6 +41,7 @@ class GadgetData {
       'category': 'Entertainment',
     },
     {
+      'id': 6,
       'name': 'Headphone',
       'description': 'ANC Headphone',
       'price': 250,
