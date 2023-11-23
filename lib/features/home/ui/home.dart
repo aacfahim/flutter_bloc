@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:techsell_bloc/features/cart/bloc/cart_bloc.dart';
 import 'package:techsell_bloc/features/cart/ui/cart.dart';
 import 'package:techsell_bloc/features/home/bloc/home_bloc.dart';
+import 'package:techsell_bloc/features/home/ui/product_tile_widget.dart';
 import 'package:techsell_bloc/features/wishlist/ui/wishlist.dart';
 
 class Home extends StatefulWidget {
@@ -40,24 +41,29 @@ class _HomeState extends State<Home> {
           case HomeLoadingState:
             return Scaffold(body: Center(child: CircularProgressIndicator()));
           case HomeLoadedSuccessState:
+            final successState = state as HomeLoadedSuccessState;
             return Scaffold(
-              appBar: AppBar(
-                title: Text("Home"),
-                actions: [
-                  IconButton(
-                      onPressed: () {
-                        homeBloc.add(HomeWishListButtonNavigateEvent());
-                      },
-                      icon: Icon(Icons.favorite_outline)),
-                  IconButton(
-                      onPressed: () {
-                        homeBloc.add(HomeCartButtonNavigateEvent());
-                      },
-                      icon: Icon(Icons.shopping_bag_outlined)),
-                ],
-              ),
-              body: Column(children: []),
-            );
+                appBar: AppBar(
+                  title: Text("Home"),
+                  actions: [
+                    IconButton(
+                        onPressed: () {
+                          homeBloc.add(HomeWishListButtonNavigateEvent());
+                        },
+                        icon: Icon(Icons.favorite_outline)),
+                    IconButton(
+                        onPressed: () {
+                          homeBloc.add(HomeCartButtonNavigateEvent());
+                        },
+                        icon: Icon(Icons.shopping_bag_outlined)),
+                  ],
+                ),
+                body: ListView.builder(
+                    itemCount: successState.products.length,
+                    itemBuilder: (context, index) {
+                      return ProductTileWidget(
+                          productDataModel: successState.products[index]);
+                    }));
           case HomeErrorState:
             return Scaffold(body: Center(child: Text("Error")));
           default:
