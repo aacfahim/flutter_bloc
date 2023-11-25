@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:techsell_bloc/features/home/ui/home.dart';
+import 'package:techsell_bloc/features/posts/ui/home.dart';
 
 void main() {
   runApp(const MyApp());
