@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:techsell_bloc/features/cart/bloc/cart_bloc.dart';
 import 'package:techsell_bloc/features/home/bloc/home_bloc.dart';
 import 'package:techsell_bloc/features/home/models/home_product_data_model.dart';
 
-class ProductTileWidget extends StatelessWidget {
-  ProductTileWidget(
-      {super.key, required this.productDataModel, required this.homeBloc});
+class CartTileWidget extends StatelessWidget {
+  CartTileWidget(
+      {super.key, required this.productDataModel, required this.cartloc});
   ProductDataModel productDataModel;
-  final HomeBloc homeBloc;
+  final CartBloc cartloc;
 
   @override
   Widget build(BuildContext context) {
@@ -38,22 +39,6 @@ class ProductTileWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(productDataModel.price.toString() + " BDT"),
-              Row(
-                children: [
-                  IconButton(
-                      icon: Icon(Icons.favorite_outline),
-                      onPressed: () {
-                        homeBloc.add(HomeProductWishListButtonClickedEvent(
-                            clickedProduct: productDataModel));
-                      }),
-                  IconButton(
-                      icon: Icon(Icons.shopping_bag_outlined),
-                      onPressed: () {
-                        homeBloc.add(HomeProductCartButtonClickedEvent(
-                            clickedProduct: productDataModel));
-                      }),
-                ],
-              ),
             ],
           ),
         ]),
